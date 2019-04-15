@@ -4,7 +4,7 @@
 In order to keep our code clean, readable and maintainable, we established several guidelines.
 The concerned languages are the following :
 
-- [HIVE](./bash.md)
+- [HIVE](./hive.md)
 - [Python](./python.md)
 - [Bash](./bash.md)
 

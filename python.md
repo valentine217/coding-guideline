@@ -65,7 +65,6 @@ my_array = [element1,
 ]
 
 # NOT OK
-
 my_array = [
     element1,
     element2,
@@ -77,7 +76,6 @@ my_array = [
 
 ```python
 # NOT OK
-
 robots_head_ids = [ robots['headid'] for robots in robots_list if robots['type'] == 'nao' ]
 
 
@@ -119,7 +117,6 @@ def my_methods(
     param3):
 
 # NOT OK
-
 def my_methods(param1,
                param2,
               ):
