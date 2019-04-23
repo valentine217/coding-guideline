@@ -2,9 +2,9 @@
 Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), [PEP20](https://www.python.org/dev/peps/pep-0020/), and some additions. To be optimized continously.
 
 ## The Zen of Python, by Tim Peters
-> Readability counts.
-> Beautiful is better than ugly.
-> Explicit is better than implicit.
+> * Readability counts.
+> * Beautiful is better than ugly.
+> * Explicit is better than implicit.
 
 ## Import
 
