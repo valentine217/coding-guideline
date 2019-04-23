@@ -31,11 +31,10 @@ import pendulum
 from hdl.airflow import global_default_args
 ```
 
-### Alphabet order 
+### Alphabet order for each group
 ```python
 # NOT OK 
-from hdl.variables import HDL_DAG_PREFIX, HDL_TASK_PREFIX, HDL_ENV, HDL_WAREHOUSE_ROOT, HDL_SCHEMA_PREFIX, \
-    DATA_FACTORY_V2
+from hdl.variables import HDL_DAG_PREFIX, ...
 from hdl.variables import HAAL_ADL_ROOT
 from hdl.airflow.sensors.adf_activity_run_sensor import ADFActivityRunSensor
 from hdl.py.dl_raw import partitioned as load_partitioned
@@ -59,7 +58,7 @@ from hdl.airflow.sensors.adf_activity_run_sensor import ADFActivityRunSensor
 from hdl.airflow.sensors.hdl_table_source_file_is_ready_sensor import HDLTableSourceFileIsReadySensor
 from hdl.py.dl_raw import partitioned as load_partitioned
 from hdl.py.dl_raw import unpartitioned as load_unpartitioned
-from hdl.variables import ...
+from hdl.variables import HDL_DAG_PREFIX, ...
 ```
 
 ### Break long lines 
@@ -157,7 +156,7 @@ PartitionedTable = collections.namedtuple("PartitionedTable",
 # OK
 PartitionedTable = collections.namedtuple(
     "PartitionedTable",
-    "".joint(
+    " ".join([
         "adf_name",
         "adf_activity_name",
         "adf_pipeline_name",
@@ -168,7 +167,7 @@ PartitionedTable = collections.namedtuple(
         "on_insert_sort_by",
         "primary_key_columns_list",
         "primary_key_sort_colums_list",
-    )
+    ])
 )
 ```
 
