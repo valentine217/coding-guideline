@@ -104,8 +104,7 @@ TUPLE_FIELDS = "hdl_target_schema_name ..."
 ```
 
 ### Explicit over implicit 
-Why? In 2016 most of text editors (vim/atom/eclipse/notepad++) have good autocompletion, so there's no reason to force
-a new developer to pause 5 secondes to reverse-engineer a compressed variable name.
+Since 2016, most of text editors (vim/atom/eclipse/notepad++) have good autocompletion.
 
 ```python
 # NOT OK inc => increment / include ?
