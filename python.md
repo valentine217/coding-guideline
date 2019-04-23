@@ -1,15 +1,14 @@
 # Python
-Guideline of PEP8, PEP257, and some additions. 
-(Only things found in our codebase. To be optimized continously.)
+Guideline of PEP8, PEP257, and some additions. To be optimized continously.
 
 
 ## Import
 
-### 3 blocks
+### 3 groups
 Imports should be grouped in the following order:
 
 1. Standard library imports.
-2. Related third party imports.
+2. Related third party imports (```pip install```).
 3. Local application/library specific imports.
 
 You should put a blank line between each group of imports.
@@ -98,7 +97,6 @@ Constants are usually defined on a module level and written in all capital lette
 ```python
 # NOT OK 
 tuple_fields = "hdl_target_schema_name ..."
-
 ```
 
 ```python
@@ -135,7 +133,7 @@ self.credential_info = azureapi.get_credential(
 )
 ```
 
-## How to break long lines
+## Break long lines
 We don't force an arbitrary number of characters; however, lines too long makes it difficult:
   * to have several files next to each other
   * when doing code review, to see which part of the line has changed
@@ -146,7 +144,33 @@ What we cloud do:
   * For 2, it's up to your common-sense;
   * Please keep in mind readability > rules.
 
-#### For array:
+### For long string
+```python
+# NOT OK
+PartitionedTable = collections.namedtuple("PartitionedTable",
+                                          ("hdl_target_schema_name hdl_target_table_name adf_activity_name adf_name "
+                                           "adf_pipeline_name do_not_deduplicate primary_key_columns_list "
+                                           "primary_key_sort_columns_list on_insert_sort_by min_adf_completion_count"))
+```
+
+```python
+# OK
+PartitionedTable = collections.namedtuple(
+    "PartitionedTable",
+    "adf_name "
+    "adf_activity_name "
+    "adf_pipeline_name "
+    "do_not_deduplicate "
+    "hdl_target_schema_name "
+    "hdl_target_table_name "
+    "min_adf_completion_count "
+    "on_insert_sort_by "
+    "primary_key_columns_list "
+    "primary_key_sort_colums_list "
+)
+```
+
+### For array
 ```python
 # NOT OK
 my_array = [element1,
@@ -174,7 +198,7 @@ my_array = [
 ] # alone and aligned with the opening line
 ```
 
-#### For functions / methods definitions: 
+### For functions / methods definitions
 ```python
 # NOT OK
 def my_methods(param1,
@@ -207,7 +231,7 @@ def my_methods(
 ):
 ```
 
-### List comprehension
+### For list comprehension
 ```python
 # NOT OK
 robots_head_ids = [ robots['headid'] for robots in robots_list if robots['type'] == 'nao' ]
@@ -226,6 +250,20 @@ robots_head_ids = [
 ### Sentence
 ```python
 # NOT OK 
+# defining skip function
+def skip_fn(*args, **kwargs):
+    ...
+```
+
+```python
+# OK
+# Define a skip function. (personnally think this comment is not very useful.)
+def skip_fn(*args, **kwargs):
+    ...
+```
+
+```python
+# NOT OK 
 
 ```
 
@@ -233,27 +271,67 @@ robots_head_ids = [
 # OK
 
 ```
+
 ### One line comment
 ```python
 # NOT OK 
-
+def skip_fn(*args, **kwargs):
+    """
+    Define a placeholder function for the skip operator.
+    """
+    return True
 ```
 
 ```python
 # OK
-
+# defining skip function
+def skip_fn(*args, **kwargs):
+    """Define a placeholder function for the skip operator."""
+    return True
 ```
+
 ### First line
 ```python
 # NOT OK 
-
+def compute_params(context):
+    """
+    Passing date and environment parameters to ADF Pipeline
+    :param context: ...
+    :return: pDayPath, pMonthPath, pYearPath, pDatePath
 ```
 
 ```python
 # OK
-
+def compute_params(context):
+    """Pass the date and environment parameters to ADF Pipeline.
+    
+    :param context: ...
+    :return: pDayPath, pMonthPath, pYearPath, pDatePath
 ```
+
 ### None return / parameters
+```python
+# NOT OK 
+def skip_fn(*args, **kwargs):
+    """Placeholder function for the skip operator.
+    :param args:
+    :param kwargs:
+    """
+    return True
+```
+
+```python
+# OK
+def skip_fn(*args, **kwargs):
+    """Placeholder function for the skip operator."""
+    return True
+```
+
+## Others
+### Mix of single and double quote
+In Python, single-quoted strings and double-quoted strings are the same. This PEP does not make a recommendation for this. Pick a rule and stick to it to avoid backslashes. It improves readability.
+
+
 ```python
 # NOT OK 
 
@@ -264,10 +342,14 @@ robots_head_ids = [
 
 ```
 
+```python
+# NOT OK 
 
-## Others
+```
 
-### Mix of single and double quota
+```python
+# OK
 
+```
 ### Magic number
-
+(TBC)
