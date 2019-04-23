@@ -1,7 +1,8 @@
 # Python
 Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), [PEP20](https://www.python.org/dev/peps/pep-0020/), and some additions. To be optimized continously.
 
-## The Zen of Python, by Tim Peters
+## Why
+Zen of Python, Tim Peters
 > * Readability counts.
 > * Beautiful is better than ugly.
 > * Explicit is better than implicit.
@@ -92,7 +93,7 @@ from hdl.variables import (
 ### Snake case or Camel case 
    * ```Pascal case``` for the ```class``` name ( `MyClass`  )
    * ```Snake case``` for the ```variable``` and ```function``` name ( `my_variable`, `my_function`)
-   * ```ADF pipelines```' and ```Airflow tasks```' name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
+   * ```ADF pipelines``` and ```Airflow tasks``` name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
 
 ### Constants 
 [PEP8](https://www.python.org/dev/peps/pep-0008/#constants)
