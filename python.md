@@ -144,10 +144,12 @@ We don't force an arbitrary number of characters; however, lines too long makes 
   * to count how many arguments there are etc.
 
 [PEP8](https://www.python.org/dev/peps/pep-0008/#when-to-use-trailing-commas)
-> `Trailing Commas` are often helpful when a list of values, arguments or imported items is expected to be extended over time. The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. Therefore:
->   * always do multiline when it's `>=` 3 parameters/elements;
->   * for 2, it's up to your common-sense;
->   * keep in mind readability > rules.
+> `Trailing Commas` are often helpful when a list of values, arguments or imported items is expected to be extended over time. The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. 
+
+Therefore:
+   * always do multiline when it's `>=` 3 parameters/elements;
+   * for 2, it's up to your common-sense;
+   * keep in mind readability > rules.
 
 ### For long string 
 ```python
