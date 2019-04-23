@@ -11,6 +11,7 @@ import this
 ## Import
 
 ### 3 groups 
+[PEP8](https://www.python.org/dev/peps/pep-0008/#imports)
 > Imports should be grouped in the following order:
 > 
 > 1. Standard library imports.
@@ -91,13 +92,13 @@ from hdl.variables import (
 ## Name variables / classes / functions / pipelines 
 
 ### Snake case or Camel case 
-
    * ```Pascal case``` for the ```class``` name ( `MyClass`  )
    * ```Snake case``` for the ```variable``` and ```function``` name ( `my_variable`, `my_function`)
    * ```ADF pipelines```' and ```Airflow tasks```' name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
 
 ### Constants 
-Constants are usually defined on a module level and written in all capital letters with underscores separating words.
+[PEP8](https://www.python.org/dev/peps/pep-0008/#constants)
+> Constants are usually defined on a module level and written in all capital letters with underscores separating words.
 
 ```python
 # NOT OK 
@@ -143,10 +144,11 @@ We don't force an arbitrary number of characters; however, lines too long makes 
   * when doing code review, to see which part of the line has changed
   * to count how many arguments there are etc.
 
-`Trailing Commas` are often helpful when a list of values, arguments or imported items is expected to be extended over time. The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. Therefore:
-  * always do multiline when it's `>=` 3 parameters/elements;
-  * for 2, it's up to your common-sense;
-  * keep in mind readability > rules.
+[PEP8](https://www.python.org/dev/peps/pep-0008/#when-to-use-trailing-commas)
+> `Trailing Commas` are often helpful when a list of values, arguments or imported items is expected to be extended over time. The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. Therefore:
+>   * always do multiline when it's `>=` 3 parameters/elements;
+>   * for 2, it's up to your common-sense;
+>   * keep in mind readability > rules.
 
 ### For long string 
 ```python
@@ -238,7 +240,8 @@ def my_methods(
 ```
 
 ### For list comprehension
-While sometimes it's okay to put an if/for/while with a small body on the same line, never do this for multi-clause statements. Also avoid folding such long lines!
+[PEP8](https://www.python.org/dev/peps/pep-0008/#other-recommendations)
+> While sometimes it's okay to put an if/for/while with a small body on the same line, never do this for multi-clause statements. Also avoid folding such long lines!
 
 ```python
 # NOT OK
@@ -256,7 +259,8 @@ articles_ids = [
 
 ## Comments
 ### A complete sentence
-Comments should be complete sentences. The first word should be capitalized.
+[PEP8](https://www.python.org/dev/peps/pep-0008/#comments)
+> Comments should be complete sentences. The first word should be capitalized.
 
 ```python
 # NOT OK 
@@ -273,7 +277,9 @@ def skip_fn(*args, **kwargs):
 ```
 
 ### One-line Docstrings
-One-liners are for really obvious cases. They should really fit on one line.
+[PEP257](https://www.python.org/dev/peps/pep-0257/#one-line-docstrings)
+> One-liners are for really obvious cases. They should really fit on one line.
+
 ```python
 # NOT OK 
 def skip_fn(*args, **kwargs):
@@ -291,13 +297,14 @@ def skip_fn(*args, **kwargs):
 ```
 
 ### Multi-line Docstrings
-Block comments generally consist of one or more paragraphs built out of complete sentences, with each sentence ending in a period.
-
-Multi-line docstrings consist of:
-* a summary line just like a one-line docstring, 
-* followed by a blank line, 
-* followed by a more elaborate description. 
-The summary line may be used by automatic indexing tools; it is important that it fits on one line and is separated from the rest of the docstring by a blank line.
+[PEP257](https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings)
+> Block comments generally consist of one or more paragraphs built out of complete sentences, with each sentence ending in a period.
+> 
+> Multi-line docstrings consist of:
+> * a summary line just like a one-line docstring, 
+> * followed by a blank line, 
+> * followed by a more elaborate description. 
+> The summary line may be used by automatic indexing tools; it is important that it fits on one line and is separated from the rest of the docstring by a blank line.
 
 ```python
 # NOT OK 
@@ -337,7 +344,8 @@ def skip_fn(*args, **kwargs):
 
 ## Others
 ### Mix of single and double quote
-In Python, single-quoted strings and double-quoted strings are the same. This PEP does not make a recommendation for this. Pick a rule and stick to it to avoid backslashes. It improves readability.
+[PEP8](https://www.python.org/dev/peps/pep-0008/#string-quotes)
+> In Python, single-quoted strings and double-quoted strings are the same. This PEP does not make a recommendation for this. Pick a rule and stick to it to avoid backslashes. It improves readability.
 
 ```python
 # NOT OK 
