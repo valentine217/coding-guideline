@@ -137,7 +137,12 @@ We don't force an arbitrary number of characters; however, lines too long makes 
   * when doing code review, to see which part of the line has changed
   * to count how many arguments there are etc.
 
-What we cloud do:
+When trailing commas are redundant, they are often helpful:
+* when a version control system is used, 
+* when a list of values, arguments or imported items is expected to be extended over time. 
+The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. .
+
+We cloud:
   * always do multiline when it's `>=` 3 parameters/elements;
   * for 2, it's up to your common-sense;
   * keep in mind readability > rules.
@@ -232,6 +237,8 @@ def my_methods(
 ```
 
 ### For list comprehension
+While sometimes it's okay to put an if/for/while with a small body on the same line, never do this for multi-clause statements. Also avoid folding such long lines!
+
 ```python
 # NOT OK
 articles_ids = [ articles["id"] for articles in articles_list if articles["type"] == "A" ]
