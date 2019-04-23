@@ -235,15 +235,15 @@ def my_methods(
 ### For list comprehension
 ```python
 # NOT OK
-robots_head_ids = [ robots['headid'] for robots in robots_list if robots['type'] == 'nao' ]
+articles_ids = [ articles["id"] for articles in articles_list if articles["type"] == "A" ]
 ```
 
 ```python
 # OK
-robots_head_ids = [
-    robots['headid']
-    for robots in robots_list
-    if robots['type] == 'nao'
+articles_ids = [
+    articles["headid"]
+    for articles in articles_list
+    if articles["type"] == "A"
 ]
 ```
 
@@ -358,6 +358,9 @@ PARTITIONED_TABLE = PartitionedTable(
     max_partitions_in_total=600,
     megabytes_per_reducer_on_finalize=128,
 )
+
+...
+
 LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
     num_partitions_per_batch=PARTITIONED_TABLE.num_partitions_per_batch,
     max_partitions_in_total=PARTITIONED_TABLE.max_partitions_in_total,
