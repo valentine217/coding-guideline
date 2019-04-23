@@ -4,7 +4,7 @@ Guideline of PEP8, PEP257, and some additions. To be optimized continously.
 
 ## Import
 
-### 3 groups
+### 3 groups 
 Imports should be grouped in the following order:
 
 1. Standard library imports.
@@ -15,7 +15,7 @@ You should put a blank line between each group of imports.
 
 ```python
 # NOT OK 
-import zlib
+import pendulum
 from airflow import DAG
 from hdl.airflow import global_default_args
 from datetime import datetime
@@ -26,12 +26,12 @@ from datetime import datetime
 from datetime import datetime 
 
 from airflow import DAG
-import zlib
+import pendulum
 
 from hdl.airflow import global_default_args
 ```
 
-### Alphabet order
+### Alphabet order 
 ```python
 # NOT OK 
 from hdl.variables import HDL_DAG_PREFIX, HDL_TASK_PREFIX, HDL_ENV, HDL_WAREHOUSE_ROOT, HDL_SCHEMA_PREFIX, \
@@ -62,7 +62,7 @@ from hdl.py.dl_raw import unpartitioned as load_unpartitioned
 from hdl.variables import ...
 ```
 
-### Break long lines
+### Break long lines 
 ```python
 # NOT OK 
 from hdl.variables import HDL_DAG_PREFIX, HDL_SCHEMA_PREFIX, HDL_WAREHOUSE_ROOT, DATA_FACTORY_V2, \
@@ -91,7 +91,7 @@ from hdl.variables import (
    * Snake case for everything else ( `my_variable`, `my_function`)
    * ADF pipelines' and Airflow tasks' name (`Snake case`?)
 
-### Constants
+### Constants 
 Constants are usually defined on a module level and written in all capital letters with underscores separating words.
 
 ```python
@@ -104,7 +104,7 @@ tuple_fields = "hdl_target_schema_name ..."
 TUPLE_FIELDS = "hdl_target_schema_name ..."
 ```
 
-### Explicit over implicit
+### Explicit over implicit 
 Why? In 2016 most of text editors (vim/atom/eclipse/notepad++) have good autocompletion, so there's no reason to force
 a new developer to pause 5 secondes to reverse-engineer a compressed variable name.
 
@@ -144,7 +144,7 @@ What we cloud do:
   * For 2, it's up to your common-sense;
   * Please keep in mind readability > rules.
 
-### For long string
+### For long string 
 ```python
 # NOT OK
 PartitionedTable = collections.namedtuple("PartitionedTable",
@@ -157,16 +157,18 @@ PartitionedTable = collections.namedtuple("PartitionedTable",
 # OK
 PartitionedTable = collections.namedtuple(
     "PartitionedTable",
-    "adf_name "
-    "adf_activity_name "
-    "adf_pipeline_name "
-    "do_not_deduplicate "
-    "hdl_target_schema_name "
-    "hdl_target_table_name "
-    "min_adf_completion_count "
-    "on_insert_sort_by "
-    "primary_key_columns_list "
-    "primary_key_sort_colums_list "
+    "".joint(
+        "adf_name",
+        "adf_activity_name",
+        "adf_pipeline_name",
+        "do_not_deduplicate",
+        "hdl_target_schema_name",
+        "hdl_target_table_name",
+        "min_adf_completion_count",
+        "on_insert_sort_by",
+        "primary_key_columns_list",
+        "primary_key_sort_colums_list",
+    )
 )
 ```
 
@@ -198,7 +200,7 @@ my_array = [
 ] # alone and aligned with the opening line
 ```
 
-### For functions / methods definitions
+### For functions / methods definitions 
 ```python
 # NOT OK
 def my_methods(param1,
@@ -257,7 +259,7 @@ def skip_fn(*args, **kwargs):
 
 ```python
 # OK
-# Define a skip function. (personnally think this comment is not very useful.)
+# Define a skip function. (This comment seems not very useful.)
 def skip_fn(*args, **kwargs):
     ...
 ```
