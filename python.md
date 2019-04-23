@@ -1,5 +1,5 @@
 # Python
-Guideline of PEP8, PEP257, and some additions. To be optimized continously.
+Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), and some additions. To be optimized continously.
 
 
 ## Import
