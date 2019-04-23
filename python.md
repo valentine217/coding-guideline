@@ -88,7 +88,7 @@ from hdl.variables import (
 
    * Pascal case for the class name ( `MyClass`  )
    * Snake case for everything else ( `my_variable`, `my_function`)
-   * ADF pipelines' and Airflow tasks' name (`Snake case`?)
+   * ADF pipelines' and Airflow tasks' name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
 
 ### Constants 
 Constants are usually defined on a module level and written in all capital letters with underscores separating words.
@@ -248,7 +248,9 @@ articles_ids = [
 ```
 
 ## Comments
-### A sentence
+### A complete sentence
+Comments should be complete sentences. The first word should be capitalized.
+
 ```python
 # NOT OK 
 # defining skip function
@@ -263,7 +265,8 @@ def skip_fn(*args, **kwargs):
     ...
 ```
 
-### One line comment
+### One-line Docstrings
+One-liners are for really obvious cases. They should really fit on one line.
 ```python
 # NOT OK 
 def skip_fn(*args, **kwargs):
@@ -280,7 +283,15 @@ def skip_fn(*args, **kwargs):
     return True
 ```
 
-### First line of comments
+### Multi-line Docstrings
+Block comments generally consist of one or more paragraphs built out of complete sentences, with each sentence ending in a period.
+
+Multi-line docstrings consist of:
+* a summary line just like a one-line docstring, 
+* followed by a blank line, 
+* followed by a more elaborate description. 
+The summary line may be used by automatic indexing tools; it is important that it fits on one line and is separated from the rest of the docstring by a blank line.
+
 ```python
 # NOT OK 
 def compute_params(context):
