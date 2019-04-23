@@ -1,12 +1,10 @@
 # Python
-Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), and some additions. To be optimized continously.
+Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), [PEP20](https://www.python.org/dev/peps/pep-0020/), and some additions. To be optimized continously.
 
-
-## Why
-Please do: 
-```python
-import this
-```
+## The Zen of Python, by Tim Peters
+> Readability counts.
+> Beautiful is better than ugly.
+> Explicit is better than implicit.
 
 ## Import
 
