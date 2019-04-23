@@ -2,16 +2,22 @@
 Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), and some additions. To be optimized continously.
 
 
+## Why
+Please do: 
+```python
+import this
+```
+
 ## Import
 
 ### 3 groups 
-Imports should be grouped in the following order:
-
-1. Standard library imports.
-2. Related third party imports (```pip install```).
-3. Local application/library specific imports.
-
-You should put a blank line between each group of imports.
+> Imports should be grouped in the following order:
+> 
+> 1. Standard library imports.
+> 2. Related third party imports (```pip install```).
+> 3. Local application/library specific imports.
+> 
+> You should put a blank line between each group of imports.
 
 ```python
 # NOT OK 
@@ -137,12 +143,7 @@ We don't force an arbitrary number of characters; however, lines too long makes 
   * when doing code review, to see which part of the line has changed
   * to count how many arguments there are etc.
 
-When trailing commas are redundant, they are often helpful:
-* when a version control system is used, 
-* when a list of values, arguments or imported items is expected to be extended over time. 
-The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. .
-
-We cloud:
+`Trailing Commas` are often helpful when a list of values, arguments or imported items is expected to be extended over time. The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. Therefore:
   * always do multiline when it's `>=` 3 parameters/elements;
   * for 2, it's up to your common-sense;
   * keep in mind readability > rules.
