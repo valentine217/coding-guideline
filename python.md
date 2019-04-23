@@ -298,9 +298,10 @@ def skip_fn(*args, **kwargs):
 ```
 
 ### Multi-line Docstrings
-[PEP257](https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings)
+[PEP8](https://www.python.org/dev/peps/pep-0008/#comments)
 > Block comments generally consist of one or more paragraphs built out of complete sentences, with each sentence ending in a period.
-> 
+
+[PEP257](https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings)
 > Multi-line docstrings consist of:
 > * a summary line just like a one-line docstring, 
 > * followed by a blank line, 
