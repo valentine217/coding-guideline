@@ -84,9 +84,9 @@ from hdl.variables import (
 )
 ```
 
-## Name variable / classes / functions / Pipelines 
+## Name variable / classes / functions / pipelines 
 
-### Snake case ? camel case ?
+### Snake case or Camel case 
 
    * Pascal case for the class name ( `MyClass`  )
    * Snake case for everything else ( `my_variable`, `my_function`)
@@ -110,7 +110,6 @@ TUPLE_FIELDS = "hdl_target_schema_name ..."
 Why? In 2016 most of text editors (vim/atom/eclipse/notepad++) have good autocompletion, so there's no reason to force
 a new developer to pause 5 secondes to reverse-engineer a compressed variable name.
 
-
 ```python
 # NOT OK inc => increment / include ?
 def inc_ctr():
@@ -122,7 +121,6 @@ def inc_ctr():
 def include_category():
     pass
 ```
-
 
 ```python
 # NOT OK creds_info => credit / credential ?
@@ -137,26 +135,18 @@ self.credential_info = azureapi.get_credential(
 )
 ```
 
-***
 ## How to break long lines
+We don't force an arbitrary number of characters; however, lines too long makes it difficult:
+  * to have several files next to each other
+  * when doing code review, to see which part of the line has changed
+  * to count how many arguments there are etc.
 
-We don't force an arbitrary number of characters, however lines too long:
-  * make it difficult to have several files next to each other
-  * make it difficult when doing code review, to see which part of the line has changed
-  * make it difficult to count how many arguments there are etc.
+What we cloud do:
+  * Always do multiline when it's `>=` 3 parameters/elements;
+  * For 2, it's up to your common-sense;
+  * Please keep in mind readability > rules.
 
 #### For array:
-
-```python
-# OK
-my_array = [
-    element1,
-    element2,
-    # ...
-    element4, # /!\ note here the final `,` , so that adding a new element create a nice diff
-] # alone and aligned with the opening line
-```
-
 ```python
 # NOT OK
 my_array = [element1,
@@ -174,38 +164,17 @@ my_array = [
     element4]
 ```
 
-### List comprehension
-
-```python
-# NOT OK
-robots_head_ids = [ robots['headid'] for robots in robots_list if robots['type'] == 'nao' ]
-```
-
 ```python
 # OK
-robots_head_ids = [
-    robots['headid']
-    for robots in robots_list
-    if robots['type] == 'nao'
-]
-```
- 
-
-#### For functions / methods definitions:
-(same logic except that it's `(` and not `[`) 
-
-Please always do multiline when it's `>=` 3 parameters
-for 2 it's up to your common-sense, keep in mind readability > rules
-
-```python
-# OK
-def my_methods(
-    param1,
-    param2,
-    param3, # /!\ don't forget the final `,`
-):
+my_array = [
+    element1,
+    element2,
+    # ...
+    element4, # /!\ note here the final `,` , so that adding a new element create a nice diff
+] # alone and aligned with the opening line
 ```
 
+#### For functions / methods definitions: 
 ```python
 # NOT OK
 def my_methods(param1,
@@ -229,6 +198,29 @@ def my_methods(param1,
               ):
 ```
 
+```python
+# OK
+def my_methods(
+    param1,
+    param2,
+    param3, # /!\ don't forget the final `,`
+):
+```
+
+### List comprehension
+```python
+# NOT OK
+robots_head_ids = [ robots['headid'] for robots in robots_list if robots['type'] == 'nao' ]
+```
+
+```python
+# OK
+robots_head_ids = [
+    robots['headid']
+    for robots in robots_list
+    if robots['type] == 'nao'
+]
+```
 
 ## Comments
 ### Sentence
