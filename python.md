@@ -139,9 +139,9 @@ We don't force an arbitrary number of characters; however, lines too long makes 
   * to count how many arguments there are etc.
 
 What we cloud do:
-  * Always do multiline when it's `>=` 3 parameters/elements;
-  * For 2, it's up to your common-sense;
-  * Please keep in mind readability > rules.
+  * always do multiline when it's `>=` 3 parameters/elements;
+  * for 2, it's up to your common-sense;
+  * keep in mind readability > rules.
 
 ### For long string 
 ```python
@@ -341,5 +341,30 @@ metrics_resourcemanager_clustermetrics_CL
 """.format(CLUSTER_NAME=CLUSTER_NAME)
 ```
 
-### Magic number
-(TBC)
+### [Magic number](https://en.wikipedia.org/wiki/Magic_number_(programming))
+No ```Magic Number``` makes it easier:
+* to read and understand;
+* to alter the value of the number, as it is not duplicated. 
+
+```python
+# NOT OK
+LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
+    num_partitions_per_batch=100,
+    max_partitions_in_total=600,
+    megabytes_per_reducer_on_finalize=128,
+)
+```
+
+```python
+# OK
+PARTITIONED_TABLE = PartitionedTable(
+    num_partitions_per_batch=100,
+    max_partitions_in_total=600,
+    megabytes_per_reducer_on_finalize=128,
+)
+LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
+    num_partitions_per_batch=PARTITIONED_TABLE.num_partitions_per_batch,
+    max_partitions_in_total=PARTITIONED_TABLE.max_partitions_in_total,
+    megabytes_per_reducer_on_finalize=PARTITIONED_TABLE.megabytes_per_reducer_on_finalize,
+)
+```
