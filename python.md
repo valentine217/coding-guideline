@@ -82,13 +82,13 @@ from hdl.variables import (
 )
 ```
 
-## Name variable / classes / functions / pipelines 
+## Name variables / classes / functions / pipelines 
 
 ### Snake case or Camel case 
 
-   * Pascal case for the class name ( `MyClass`  )
-   * Snake case for everything else ( `my_variable`, `my_function`)
-   * ADF pipelines' and Airflow tasks' name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
+   * ```Pascal case``` for the ```class``` name ( `MyClass`  )
+   * ```Snake case``` for the ```variable``` and ```function``` name ( `my_variable`, `my_function`)
+   * ```ADF pipelines```' and ```Airflow tasks```' name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
 
 ### Constants 
 Constants are usually defined on a module level and written in all capital letters with underscores separating words.
