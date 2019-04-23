@@ -195,7 +195,7 @@ my_array = [
     element1,
     element2,
     # ...
-    element4, # /!\ note here the final `,` , so that adding a new element create a nice diff
+    element4, # note here the final `,` , so that adding a new element create a nice diff
 ] # alone and aligned with the opening line
 ```
 
@@ -228,7 +228,7 @@ def my_methods(param1,
 def my_methods(
     param1,
     param2,
-    param3, # /!\ don't forget the final `,`
+    param3, # don't forget the final `,`
 ):
 ```
 
@@ -258,19 +258,9 @@ def skip_fn(*args, **kwargs):
 
 ```python
 # OK
-# Define a skip function. (This comment seems not very useful.)
+# Define a skip function.
 def skip_fn(*args, **kwargs):
     ...
-```
-
-```python
-# NOT OK 
-
-```
-
-```python
-# OK
-
 ```
 
 ### One line comment
@@ -285,7 +275,6 @@ def skip_fn(*args, **kwargs):
 
 ```python
 # OK
-# defining skip function
 def skip_fn(*args, **kwargs):
     """Define a placeholder function for the skip operator."""
     return True
@@ -332,25 +321,25 @@ def skip_fn(*args, **kwargs):
 ### Mix of single and double quote
 In Python, single-quoted strings and double-quoted strings are the same. This PEP does not make a recommendation for this. Pick a rule and stick to it to avoid backslashes. It improves readability.
 
-
 ```python
 # NOT OK 
-
+query = {"query": 'metrics_resourcemanager_clustermetrics_CL'
+                  '| where ClusterType_s == "spark" and TimeGenerated > ago(5m) and ClusterName_s '
+                  'contains ' "\"" + CLUSTER_NAME + "\""
+                                                    '| summarize AggregatedValue = max(NumUnhealthyNMs_d) '
+                                                    'by ClusterName_s'
+                                                    '| sort by AggregatedValue desc| where AggregatedValue > 0'}
 ```
 
 ```python
 # OK
-
+query = """
+metrics_resourcemanager_clustermetrics_CL
+| where ClusterType_s == "spark" and TimeGenerated > ago(5m) and ClusterName_s contains "{CLUSTER_NAME}"
+| summarize AggregatedValue = max(NumUnhealthyNMs_d) by ClusterName_s
+| sort by AggregatedValue desc| where AggregatedValue > 0
+""".format(CLUSTER_NAME=CLUSTER_NAME)
 ```
 
-```python
-# NOT OK 
-
-```
-
-```python
-# OK
-
-```
 ### Magic number
 (TBC)
