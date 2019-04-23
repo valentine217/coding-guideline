@@ -326,23 +326,19 @@ In Python, single-quoted strings and double-quoted strings are the same. This PE
 query = {"query": 'metrics_resourcemanager_clustermetrics_CL'
                   '| where ClusterType_s == "spark" and TimeGenerated > ago(5m) and ClusterName_s '
                   'contains ' "\"" + CLUSTER_NAME + "\""
-                                                    '| summarize AggregatedValue = max(NumUnhealthyNMs_d) '
-                                                    'by ClusterName_s'
-                                                    '| sort by AggregatedValue desc| where AggregatedValue > 0'}
+                  '| sort by AggregatedValue desc| where AggregatedValue > 0'}
 ```
 
 ```python
 # OK
-query = """
-metrics_resourcemanager_clustermetrics_CL
+query = """metrics_resourcemanager_clustermetrics_CL
 | where ClusterType_s == "spark" and TimeGenerated > ago(5m) and ClusterName_s contains "{CLUSTER_NAME}"
-| summarize AggregatedValue = max(NumUnhealthyNMs_d) by ClusterName_s
 | sort by AggregatedValue desc| where AggregatedValue > 0
 """.format(CLUSTER_NAME=CLUSTER_NAME)
 ```
 
 ### [Magic number](https://en.wikipedia.org/wiki/Magic_number_(programming))
-No ```Magic Number``` makes it easier:
+```Magic Number``` makes the code different:
 * to read and understand;
 * to alter the value of the number, as it is not duplicated. 
 
