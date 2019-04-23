@@ -20,7 +20,7 @@ Zen of Python, Tim Peters
 > You should put a blank line between each group of imports.
 
 ```python
-# NOT OK 
+# Not recommended
 import pendulum
 from airflow import DAG
 from hdl.airflow import global_default_args
@@ -28,7 +28,7 @@ from datetime import datetime
 ```
 
 ```python
-# OK 
+# Recommended 
 from datetime import datetime 
 
 from airflow import DAG
@@ -39,7 +39,7 @@ from hdl.airflow import global_default_args
 
 ### Alphabet order for each group
 ```python
-# NOT OK 
+# Not recommended 
 from hdl.variables import HDL_DAG_PREFIX, ...
 from hdl.variables import HAAL_ADL_ROOT
 from hdl.airflow.sensors.adf_activity_run_sensor import ADFActivityRunSensor
@@ -54,7 +54,7 @@ from hdl.airflow import global_default_args
 ```
 
 ```python
-# OK 
+# Recommended 
 from hdl.airflow import global_default_args
 from hdl.airflow.operators.hdl_access_rights_operator import HDLAccessRightsOperator
 from hdl.airflow.operators.hdl_compute_stats_operator import HDLComputeStatsOperator
@@ -69,13 +69,13 @@ from hdl.variables import HDL_DAG_PREFIX, ...
 
 ### Break long lines 
 ```python
-# NOT OK 
+# Not recommended
 from hdl.variables import HDL_DAG_PREFIX, HDL_SCHEMA_PREFIX, HDL_WAREHOUSE_ROOT, DATA_FACTORY_V2, \
     DATA_FACTORY_V1, HDL_TASK_PREFIX, HDL_INGRESS_ROOT, HDL_ENV_NAME, LOCAL_TZ
 ```
 
 ```python
-# OK 
+# Recommended 
 from hdl.variables import (
     DATA_FACTORY_V1,
     DATA_FACTORY_V2,
@@ -100,12 +100,12 @@ from hdl.variables import (
 > Constants are usually defined on a module level and written in all capital letters with underscores separating words.
 
 ```python
-# NOT OK 
+# Not recommended
 tuple_fields = "hdl_target_schema_name ..."
 ```
 
 ```python
-# OK
+# Recommended
 TUPLE_FIELDS = "hdl_target_schema_name ..."
 ```
 
@@ -113,24 +113,24 @@ TUPLE_FIELDS = "hdl_target_schema_name ..."
 Since 2016, most of text editors (vim/atom/eclipse/notepad++) have good autocompletion.
 
 ```python
-# NOT OK inc => increment / include ?
+# Not recommended inc => increment / include ?
 def inc_ctr():
     pass
 ```
 
 ```python
-# OK
+# Recommended
 def include_category():
     pass
 ```
 
 ```python
-# NOT OK creds_info => credit / credential ?
+# Not recommended creds_info => credit / credential ?
 self.creds_info = azureapi.get_credential(cred_name=self.cluster_name, cred_type="hdi")
 ```
 
 ```python
-# OK
+# Recommended
 self.credential_info = azureapi.get_credential(
     credential_name=self.cluster_name, 
     credential_type="hdi",
@@ -153,7 +153,7 @@ Therefore:
 
 ### For long string 
 ```python
-# NOT OK
+# Not recommended
 PartitionedTable = collections.namedtuple("PartitionedTable",
                                           ("hdl_target_schema_name hdl_target_table_name adf_activity_name adf_name "
                                            "adf_pipeline_name do_not_deduplicate primary_key_columns_list "
@@ -161,7 +161,7 @@ PartitionedTable = collections.namedtuple("PartitionedTable",
 ```
 
 ```python
-# OK
+# Recommended
 PartitionedTable = collections.namedtuple(
     "PartitionedTable",
     " ".join([
@@ -181,7 +181,7 @@ PartitionedTable = collections.namedtuple(
 
 ### For array
 ```python
-# NOT OK
+# Not recommended
 my_array = [element1,
     element2,
     element3,
@@ -189,7 +189,7 @@ my_array = [element1,
 ```
 
 ```python
-# NOT OK
+# Not recommended
 my_array = [
     element1,
     element2,
@@ -198,7 +198,7 @@ my_array = [
 ```
 
 ```python
-# OK
+# Recommended
 my_array = [
     element1,
     element2,
@@ -209,7 +209,7 @@ my_array = [
 
 ### For functions / methods definitions 
 ```python
-# NOT OK
+# Not recommended
 def my_methods(param1,
     param2,
     param3,
@@ -217,7 +217,7 @@ def my_methods(param1,
 ```
 
 ```python
-# NOT OK
+# Not recommended
 def my_methods(
     param1,
     param2,
@@ -225,14 +225,14 @@ def my_methods(
 ```
 
 ```python
-# NOT OK
+# Not recommended
 def my_methods(param1,
                param2,
               ):
 ```
 
 ```python
-# OK
+# Recommended
 def my_methods(
     param1,
     param2,
@@ -245,12 +245,12 @@ def my_methods(
 > While sometimes it's okay to put an if/for/while with a small body on the same line, never do this for multi-clause statements. Also avoid folding such long lines!
 
 ```python
-# NOT OK
+# Not recommended
 articles_ids = [ articles["id"] for articles in articles_list if articles["type"] == "A" ]
 ```
 
 ```python
-# OK
+# Recommended
 articles_ids = [
     articles["headid"]
     for articles in articles_list
@@ -264,14 +264,14 @@ articles_ids = [
 > Comments should be complete sentences. The first word should be capitalized.
 
 ```python
-# NOT OK 
+# Not recommended
 # defining skip function
 def skip_fn(*args, **kwargs):
     ...
 ```
 
 ```python
-# OK
+# Recommended
 # Define a skip function.
 def skip_fn(*args, **kwargs):
     ...
@@ -282,7 +282,7 @@ def skip_fn(*args, **kwargs):
 > One-liners are for really obvious cases. They should really fit on one line.
 
 ```python
-# NOT OK 
+# Not recommended
 def skip_fn(*args, **kwargs):
     """
     Define a placeholder function for the skip operator.
@@ -291,7 +291,7 @@ def skip_fn(*args, **kwargs):
 ```
 
 ```python
-# OK
+# Recommended
 def skip_fn(*args, **kwargs):
     """Define a placeholder function for the skip operator."""
     return True
@@ -309,7 +309,7 @@ def skip_fn(*args, **kwargs):
 > The summary line may be used by automatic indexing tools; it is important that it fits on one line and is separated from the rest of the docstring by a blank line.
 
 ```python
-# NOT OK 
+# Not recommended 
 def compute_params(context):
     """
     Passing date and environment parameters to ADF Pipeline
@@ -318,7 +318,7 @@ def compute_params(context):
 ```
 
 ```python
-# OK
+# Recommended
 def compute_params(context):
     """Pass the date and environment parameters to ADF Pipeline.
     
@@ -328,7 +328,7 @@ def compute_params(context):
 
 ### None return or parameters
 ```python
-# NOT OK 
+# Not recommended
 def skip_fn(*args, **kwargs):
     """Placeholder function for the skip operator.
     :param args:
@@ -338,7 +338,7 @@ def skip_fn(*args, **kwargs):
 ```
 
 ```python
-# OK
+# Recommended
 def skip_fn(*args, **kwargs):
     """Placeholder function for the skip operator."""
     return True
@@ -350,7 +350,7 @@ def skip_fn(*args, **kwargs):
 > In Python, single-quoted strings and double-quoted strings are the same. This PEP does not make a recommendation for this. Pick a rule and stick to it to avoid backslashes. It improves readability.
 
 ```python
-# NOT OK 
+# Not recommended
 query = {"query": 'metrics_resourcemanager_clustermetrics_CL'
                   '| where ClusterType_s == "spark" and TimeGenerated > ago(5m) and ClusterName_s '
                   'contains ' "\"" + CLUSTER_NAME + "\""
@@ -358,7 +358,7 @@ query = {"query": 'metrics_resourcemanager_clustermetrics_CL'
 ```
 
 ```python
-# OK
+# Recommended
 query = """metrics_resourcemanager_clustermetrics_CL
 | where ClusterType_s == "spark" and TimeGenerated > ago(5m) and ClusterName_s contains "{CLUSTER_NAME}"
 | sort by AggregatedValue desc| where AggregatedValue > 0
@@ -371,7 +371,7 @@ query = """metrics_resourcemanager_clustermetrics_CL
 * to alter the value of the number, as it is not duplicated. 
 
 ```python
-# NOT OK
+# Not recommended
 LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
     num_partitions_per_batch=100,
     max_partitions_in_total=600,
@@ -380,7 +380,7 @@ LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
 ```
 
 ```python
-# OK
+# Recommended
 PARTITIONED_TABLE = PartitionedTable(
     num_partitions_per_batch=100,
     max_partitions_in_total=600,
