@@ -248,7 +248,7 @@ articles_ids = [
 ```
 
 ## Comments
-### Sentence
+### A sentence
 ```python
 # NOT OK 
 # defining skip function
@@ -280,7 +280,7 @@ def skip_fn(*args, **kwargs):
     return True
 ```
 
-### First line
+### First line of comments
 ```python
 # NOT OK 
 def compute_params(context):
@@ -299,7 +299,7 @@ def compute_params(context):
     :return: pDayPath, pMonthPath, pYearPath, pDatePath
 ```
 
-### None return / parameters
+### None return or parameters
 ```python
 # NOT OK 
 def skip_fn(*args, **kwargs):
