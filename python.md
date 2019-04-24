@@ -5,6 +5,7 @@ Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https:/
 
 ## Why
 
+```
 >>> import this
 The Zen of Python, by Tim Peters
 
@@ -12,6 +13,7 @@ Beautiful is better than ugly.
 Explicit is better than implicit.
 Simple is better than complex.
 ...
+```
 
 ## Imports
 
