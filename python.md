@@ -366,7 +366,7 @@ query = """metrics_resourcemanager_clustermetrics_CL
 ```
 
 ### [Magic number](https://en.wikipedia.org/wiki/Magic_number_(programming))
-```Magic Number``` makes the code different:
+```Magic Number``` makes the code difficult:
 * to read and understand;
 * to alter the value of the number, as it is not duplicated. 
 
