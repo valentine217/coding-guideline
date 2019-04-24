@@ -1,15 +1,21 @@
 # Python
 Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), [PEP20](https://www.python.org/dev/peps/pep-0020/), and some additions. To be optimized continously.
 
+
 ## Why
+
+
 Zen of Python, Tim Peters
 > * Readability counts.
 > * Beautiful is better than ugly.
 > * Explicit is better than implicit.
 
+
 ## Import
 
+
 ### 3 groups 
+
 [PEP8](https://www.python.org/dev/peps/pep-0008/#imports)
 > Imports should be grouped in the following order:
 > 
@@ -38,6 +44,7 @@ from hdl.airflow import global_default_args
 ```
 
 ### Alphabet order for each group
+
 ```python
 # Not recommended 
 from hdl.variables import HDL_DAG_PREFIX, ...
@@ -68,6 +75,7 @@ from hdl.variables import HDL_DAG_PREFIX, ...
 ```
 
 ### Break long lines 
+
 ```python
 # Not recommended
 from hdl.variables import HDL_DAG_PREFIX, HDL_SCHEMA_PREFIX, HDL_WAREHOUSE_ROOT, DATA_FACTORY_V2, \
@@ -88,14 +96,18 @@ from hdl.variables import (
 )
 ```
 
+
 ## Name variables / classes / functions / pipelines 
 
+
 ### Snake case or Camel case 
+
    * ```Pascal case``` for the ```class``` name ( `MyClass`  )
    * ```Snake case``` for the ```variable``` and ```function``` name ( `my_variable`, `my_function`)
    * ```ADF pipelines``` and ```Airflow tasks``` name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
 
 ### Constants 
+
 [PEP8](https://www.python.org/dev/peps/pep-0008/#constants)
 > Constants are usually defined on a module level and written in all capital letters with underscores separating words.
 
@@ -110,6 +122,7 @@ TUPLE_FIELDS = "hdl_target_schema_name ..."
 ```
 
 ### Explicit over implicit 
+
 Since 2016, most of text editors (vim/atom/eclipse/notepad++) have good autocompletion.
 
 ```python
@@ -137,7 +150,10 @@ self.credential_info = azureapi.get_credential(
 )
 ```
 
+
 ## Break long lines
+
+
 We don't force an arbitrary number of characters; however, lines too long makes it difficult:
   * to have several files next to each other
   * when doing code review, to see which part of the line has changed
@@ -152,6 +168,7 @@ Therefore:
    * keep in mind readability > rules.
 
 ### For long string 
+
 ```python
 # Not recommended
 PartitionedTable = collections.namedtuple("PartitionedTable",
@@ -180,6 +197,7 @@ PartitionedTable = collections.namedtuple(
 ```
 
 ### For array
+
 ```python
 # Not recommended
 my_array = [element1,
@@ -208,6 +226,7 @@ my_array = [
 ```
 
 ### For functions / methods definitions 
+
 ```python
 # Not recommended
 def my_methods(param1,
@@ -241,6 +260,7 @@ def my_methods(
 ```
 
 ### For list comprehension
+
 [PEP8](https://www.python.org/dev/peps/pep-0008/#other-recommendations)
 > While sometimes it's okay to put an if/for/while with a small body on the same line, never do this for multi-clause statements. Also avoid folding such long lines!
 
@@ -258,8 +278,12 @@ articles_ids = [
 ]
 ```
 
+
 ## Comments
+
+
 ### A complete sentence
+
 [PEP8](https://www.python.org/dev/peps/pep-0008/#comments)
 > Comments should be complete sentences. The first word should be capitalized.
 
@@ -278,6 +302,7 @@ def skip_fn(*args, **kwargs):
 ```
 
 ### One-line Docstrings
+
 [PEP257](https://www.python.org/dev/peps/pep-0257/#one-line-docstrings)
 > One-liners are for really obvious cases. They should really fit on one line.
 
@@ -298,6 +323,7 @@ def skip_fn(*args, **kwargs):
 ```
 
 ### Multi-line Docstrings
+
 [PEP8](https://www.python.org/dev/peps/pep-0008/#comments)
 > Block comments generally consist of one or more paragraphs built out of complete sentences, with each sentence ending in a period.
 
@@ -327,6 +353,7 @@ def compute_params(context):
 ```
 
 ### None return or parameters
+
 ```python
 # Not recommended
 def skip_fn(*args, **kwargs):
@@ -344,8 +371,12 @@ def skip_fn(*args, **kwargs):
     return True
 ```
 
+
 ## Others
+
+
 ### Mix of single and double quote
+
 [PEP8](https://www.python.org/dev/peps/pep-0008/#string-quotes)
 > In Python, single-quoted strings and double-quoted strings are the same. This PEP does not make a recommendation for this. Pick a rule and stick to it to avoid backslashes. It improves readability.
 
@@ -366,6 +397,7 @@ query = """metrics_resourcemanager_clustermetrics_CL
 ```
 
 ### [Magic number](https://en.wikipedia.org/wiki/Magic_number_(programming))
+
 ```Magic Number``` makes the code difficult:
 * to read and understand;
 * to alter the value of the number, as it is not duplicated. 
