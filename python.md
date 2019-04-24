@@ -1,20 +1,23 @@
 # Python
+
 Guideline of [PEP8](https://www.python.org/dev/peps/pep-0008/), [PEP257](https://www.python.org/dev/peps/pep-0257/), [PEP20](https://www.python.org/dev/peps/pep-0020/), and some additions. To be optimized continously.
 
 
 ## Why
 
+```
+>>> import this
+The Zen of Python, by Tim Peters
 
-Zen of Python, Tim Peters
-> * Readability counts.
-> * Beautiful is better than ugly.
-> * Explicit is better than implicit.
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+...
+```
 
+## Imports
 
-## Import
-
-
-### 3 groups 
+### Grouping imports
 
 [PEP8](https://www.python.org/dev/peps/pep-0008/#imports)
 > Imports should be grouped in the following order:
@@ -43,7 +46,7 @@ import pendulum
 from hdl.airflow import global_default_args
 ```
 
-### Alphabet order for each group
+### Order alphabetically
 
 ```python
 # Not recommended 
@@ -96,15 +99,10 @@ from hdl.variables import (
 )
 ```
 
+## Naming conventions
 
-## Name variables / classes / functions / pipelines 
-
-
-### Snake case or Camel case 
-
-   * ```Pascal case``` for the ```class``` name ( `MyClass`  )
-   * ```Snake case``` for the ```variable``` and ```function``` name ( `my_variable`, `my_function`)
-   * ```ADF pipelines``` and ```Airflow tasks``` name (`Snake case` or `UPPER_CASE_WITH_UNDERSCORES`?)
+   * `PascalCase` for classes (`MyClass`)
+   * `snake_case` for variables and functions (`my_variable`, `my_function`)
 
 ### Constants 
 
@@ -121,7 +119,7 @@ tuple_fields = "hdl_target_schema_name ..."
 TUPLE_FIELDS = "hdl_target_schema_name ..."
 ```
 
-### Explicit over implicit 
+### Avoid using abbreviations 
 
 Since 2016, most of text editors (vim/atom/eclipse/notepad++) have good autocompletion.
 
@@ -150,11 +148,10 @@ self.credential_info = azureapi.get_credential(
 )
 ```
 
-
 ## Break long lines
 
-
 We don't force an arbitrary number of characters; however, lines too long makes it difficult:
+
   * to have several files next to each other
   * when doing code review, to see which part of the line has changed
   * to count how many arguments there are etc.
@@ -163,11 +160,12 @@ We don't force an arbitrary number of characters; however, lines too long makes 
 > `Trailing Commas` are often helpful when a list of values, arguments or imported items is expected to be extended over time. The pattern is to put each value (etc.) on a line by itself, always adding a trailing comma, and add the close parenthesis/bracket/brace on the next line. 
 
 Therefore:
-   * always do multiline when it's `>=` 3 parameters/elements;
-   * for 2, it's up to your common-sense;
-   * keep in mind readability > rules.
 
-### For long string 
+  * always do multiline when it's `>=` 3 parameters/elements;
+  * for 2, it's up to your common-sense;
+  * keep in mind readability > rules.
+
+### Strings 
 
 ```python
 # Not recommended
@@ -196,7 +194,7 @@ PartitionedTable = collections.namedtuple(
 )
 ```
 
-### For array
+### Arrays
 
 ```python
 # Not recommended
@@ -225,7 +223,7 @@ my_array = [
 ] # alone and aligned with the opening line
 ```
 
-### For functions / methods definitions 
+### Parameters 
 
 ```python
 # Not recommended
@@ -259,7 +257,7 @@ def my_methods(
 ):
 ```
 
-### For list comprehension
+### List comprehensions
 
 [PEP8](https://www.python.org/dev/peps/pep-0008/#other-recommendations)
 > While sometimes it's okay to put an if/for/while with a small body on the same line, never do this for multi-clause statements. Also avoid folding such long lines!
@@ -278,11 +276,9 @@ articles_ids = [
 ]
 ```
 
-
 ## Comments
 
-
-### A complete sentence
+### Write complete sentences
 
 [PEP8](https://www.python.org/dev/peps/pep-0008/#comments)
 > Comments should be complete sentences. The first word should be capitalized.
@@ -371,9 +367,7 @@ def skip_fn(*args, **kwargs):
     return True
 ```
 
-
-## Others
-
+## Miscellaneous
 
 ### Mix of single and double quote
 
@@ -398,9 +392,10 @@ query = """metrics_resourcemanager_clustermetrics_CL
 
 ### [Magic number](https://en.wikipedia.org/wiki/Magic_number_(programming))
 
-```Magic Number``` makes the code difficult:
-* to read and understand;
-* to alter the value of the number, as it is not duplicated. 
+Magic numbers makes the code difficult:
+
+  * to read and understand;
+  * to alter the value of the number, as it is not duplicated. 
 
 ```python
 # Not recommended
@@ -413,14 +408,6 @@ LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
 
 ```python
 # Recommended
-PARTITIONED_TABLE = PartitionedTable(
-    num_partitions_per_batch=100,
-    max_partitions_in_total=600,
-    megabytes_per_reducer_on_finalize=128,
-)
-
-...
-
 LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
     num_partitions_per_batch=PARTITIONED_TABLE.num_partitions_per_batch,
     max_partitions_in_total=PARTITIONED_TABLE.max_partitions_in_total,
