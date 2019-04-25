@@ -414,3 +414,30 @@ LOAD = HDLPartitionedDecentralizedDeltaInsertOperator(
     megabytes_per_reducer_on_finalize=PARTITIONED_TABLE.megabytes_per_reducer_on_finalize,
 )
 ```
+
+### End with a blank line
+
+```python
+# Not recommended
+from airflow import DAG
+
+with DAG(...) as dag:
+    loo = ...
+    insert = ...
+    loo >> insert 
+
+    dag.doc_md = __doc__
+```
+
+```python
+# Recommended
+from airflow import DAG
+
+with DAG(...) as dag:
+    loo = ...
+    insert = ...
+    loo >> insert 
+
+    dag.doc_md = __doc__
+
+```
