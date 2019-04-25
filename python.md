@@ -426,7 +426,7 @@ with DAG(...) as dag:
     insert = ...
     loo >> insert 
 
-    dag.doc_md = __doc__ # EOF is here.
+    dag.doc_md = __doc__ # The end of the file is here.
 ```
 
 ```python
@@ -439,5 +439,5 @@ with DAG(...) as dag:
     loo >> insert 
 
     dag.doc_md = __doc__
-# Leave a blank line here as EOF. 
+# Leave a new blank line with no content here as the end of the file. 
 ```
